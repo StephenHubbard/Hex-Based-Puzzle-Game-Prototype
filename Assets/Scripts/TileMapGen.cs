@@ -6,7 +6,7 @@ public class TileMapGen : MonoBehaviour
 {
     [SerializeField] int mapWidth = 10;
     [SerializeField] int mapHeight = 10;
-    [SerializeField] GameObject hexTilePrefab;
+    [SerializeField] GameObject[] hexTilePrefabs;
     [SerializeField] float tileXOffset = 1f;
     [SerializeField] float tileZOffset = 1f;
 
@@ -18,7 +18,8 @@ public class TileMapGen : MonoBehaviour
         for (int x = 0; x <= mapWidth; x++) {
             for (int z = 0; z <= mapHeight; z++)
             {
-                GameObject TempGO = Instantiate(hexTilePrefab);
+                int randomTileNum = Random.Range(0, hexTilePrefabs.Length);
+                GameObject TempGO = Instantiate(hexTilePrefabs[randomTileNum]);
 
                 if(z % 2 == 0) {
                     TempGO.transform.position = new Vector3(x * tileXOffset, 0, z * tileZOffset);

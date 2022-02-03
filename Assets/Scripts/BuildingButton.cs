@@ -11,6 +11,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     [SerializeField] private GameObject buildingPrefab;
     [SerializeField] private LayerMask tileMask = new LayerMask();
     [SerializeField] private GameObject buildingPreviewInstance;
+    [SerializeField] private Transform placementSpheresParent;
 
     private Camera mainCamera;
 
@@ -28,10 +29,9 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     void Update()
     {
-        if (buildingPreviewInstance)
-        {
-            UpdateBuildingPreview();
-        }
+        UpdateBuildingPreview();
+
+        UpdatePlacementSpheresVisible();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -39,6 +39,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (eventData.button != PointerEventData.InputButton.Left) {return;}
 
         buildingPreviewInstance = Instantiate(buildingPrefab);
+        buildingPreviewInstance.GetComponent<MeshRenderer>().enabled = false;
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -62,6 +63,8 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     private void UpdateBuildingPreview()
     {
+        if (!buildingPreviewInstance) {return;}
+
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, tileMask))
@@ -70,6 +73,23 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         }
 
         buildingPreviewInstance.transform.position = hit.point;
+
+        buildingPreviewInstance.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    private void UpdatePlacementSpheresVisible() {
+        if (buildingPreviewInstance){ 
+            foreach (Transform child in placementSpheresParent)
+            {
+                child.GetComponent<MeshRenderer>().enabled = true;
+            }
+        } else {
+            foreach (Transform child in placementSpheresParent)
+            {
+                child.GetComponent<MeshRenderer>().enabled = false;
+            }
+        }
+
     }
 
     private GameObject InstantiateNewBuilding(GameObject newBuilding, RaycastHit hit) {

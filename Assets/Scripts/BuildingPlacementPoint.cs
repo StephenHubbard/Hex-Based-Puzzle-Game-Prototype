@@ -5,16 +5,17 @@ using UnityEngine;
 public class BuildingPlacementPoint : MonoBehaviour
 {
     [SerializeField] GameObject placementSphere;
+    [SerializeField] Transform placementSpheres;
 
 
     void Start()
     {
-        Instantiate(placementSphere, transform.position, transform.rotation);
+        GameObject newSphere = Instantiate(placementSphere, transform.position, transform.rotation);
+        newSphere.transform.parent = GameObject.Find("Placement Spheres").transform;
     }
 
     void Update()
     {
-        
     }
 
     

@@ -9,6 +9,7 @@ public class TileMapGen : MonoBehaviour
     [SerializeField] GameObject[] hexTilePrefabs;
     [SerializeField] float tileXOffset = 1f;
     [SerializeField] float tileZOffset = 1f;
+    [SerializeField] Transform hexTiles;
 
     private void Start() {
         CreateHexTileMap();
@@ -32,7 +33,7 @@ public class TileMapGen : MonoBehaviour
     }
 
     private void SetTileInfo(GameObject GO, int x, int z) {
-        GO.transform.parent = transform;
+        GO.transform.parent = hexTiles;
         GO.name = "tile (" + x.ToString() + ", " + z.ToString() + ")";
     }
 }

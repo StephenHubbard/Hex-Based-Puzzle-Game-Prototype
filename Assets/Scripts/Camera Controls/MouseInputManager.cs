@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseInputManager : InputManager
 {
     [SerializeField] private float zoomSpeed = 3f;
+    [SerializeField] private float rotateSpeedX = .3f;
     [SerializeField] private float rightClickRotationSpeed = .1f;
 
     Vector2Int screen;
@@ -18,8 +19,11 @@ public class MouseInputManager : InputManager
     public static event RotateInputHandler OnRotateInput;
     public static event ZoomInputHandler OnZoomInput;
 
+    private Camera cam;
+
     private void Awake() {
         screen = new Vector2Int(Screen.width, Screen.height);
+        cam = Camera.main;
     }
 
     private void Update() {
@@ -28,23 +32,8 @@ public class MouseInputManager : InputManager
 
         if (!mouseValid) return;
 
-        // movement with mouse on edge screen 
-        
-        // if (mp.y > screen.y * 0.95f) {
-        //     OnMoveInput?.Invoke(Vector3.forward);
-        // }
-        // else if (mp.y < screen.y * 0.05f) {
-        //     OnMoveInput?.Invoke(-Vector3.forward);
-        // }
-
-        // if (mp.x > screen.x * 0.95f) {
-        //     OnMoveInput?.Invoke(Vector3.right);
-        // }
-        // else if (mp.x < screen.x * 0.05f) {
-        //     OnMoveInput?.Invoke(-Vector3.right);
-        // }
-
-        MouseRotation(mp);
+        MouseRotationX(mp);
+        MouseRotationY(mp);
 
         // zoom
         if (Input.mouseScrollDelta.y > 0) {
@@ -55,8 +44,7 @@ public class MouseInputManager : InputManager
         }
     }
 
-    private void MouseRotation(Vector3 mp) {
-        // rotation x
+    private void MouseRotationX(Vector3 mp) {
         if (Input.GetMouseButtonDown(1)) {
             lastMousePositionX = mp.x;
         } else if (Input.GetMouseButton(1)) {
@@ -71,6 +59,25 @@ public class MouseInputManager : InputManager
                 float difference = Mathf.Abs(lastMousePositionX - currentMousePositionX);
                 OnRotateInput?.Invoke(1f * difference * rightClickRotationSpeed);
                 lastMousePositionX = currentMousePositionX;
+            }
+        }
+    }
+
+    private void MouseRotationY(Vector3 mp) {
+        if (Input.GetMouseButtonDown(1)) {
+            lastMousePositionY = mp.y;
+        } else if (Input.GetMouseButton(1)) {
+            if (mp.y < lastMousePositionY) {
+                currentMousePositionY = mp.y;
+                float difference = Mathf.Abs(lastMousePositionY - currentMousePositionY);
+                cam.transform.eulerAngles = new Vector3(cam.transform.eulerAngles.x + (difference * rotateSpeedX), cam.transform.eulerAngles.y, cam.transform.eulerAngles.z);
+                lastMousePositionY = currentMousePositionY;
+            }
+            else if (mp.y > lastMousePositionY) {
+                currentMousePositionY = mp.y;
+                float difference = Mathf.Abs(lastMousePositionY - currentMousePositionY);
+                cam.transform.eulerAngles = new Vector3(cam.transform.eulerAngles.x - (difference * rotateSpeedX), cam.transform.eulerAngles.y, cam.transform.eulerAngles.z);
+                lastMousePositionY = currentMousePositionY;
             }
         }
     }

@@ -8,16 +8,19 @@ public class PlacementSphere : MonoBehaviour
 
     private bool isDestroyed;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isOccupied) {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other) {

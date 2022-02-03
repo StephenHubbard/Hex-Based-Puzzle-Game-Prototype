@@ -20,14 +20,16 @@ public class TileMapGen : MonoBehaviour
             for (int z = 0; z <= mapHeight; z++)
             {
                 int randomTileNum = Random.Range(0, hexTilePrefabs.Length);
-                GameObject TempGO = Instantiate(hexTilePrefabs[randomTileNum]);
+                GameObject newTile = Instantiate(hexTilePrefabs[randomTileNum]);
+                newTile.GetComponent<Tile>().isPlaced = true;
+                newTile.GetComponent<MeshCollider>().enabled = true;
 
                 if(z % 2 == 0) {
-                    TempGO.transform.position = new Vector3(x * tileXOffset, 0, z * tileZOffset);
+                    newTile.transform.position = new Vector3(x * tileXOffset, 0, z * tileZOffset);
                 } else {
-                    TempGO.transform.position = new Vector3(x * tileXOffset + tileXOffset / 2, 0, z * tileZOffset);
+                    newTile.transform.position = new Vector3(x * tileXOffset + tileXOffset / 2, 0, z * tileZOffset);
                 }
-                SetTileInfo(TempGO, x, z);
+                SetTileInfo(newTile, x, z);
             }
         }
     }

@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &575057083024356717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6418890784829272516}
+  - component: {fileID: 454374693871594706}
+  m_Layer: 6
+  m_Name: TilePlacementPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6418890784829272516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575057083024356717}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.01, y: -0.01725, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4946521366293259290}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &454374693871594706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575057083024356717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d938ee8c78e1214468aa8e5b27851f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementHex: {fileID: 7748866392502717939, guid: f75b6d200d1a55f4aa4f88fcaa85b73a, type: 3}
 --- !u!1 &1132782051254831126
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +88,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheres: {fileID: 0}
 --- !u!1 &1336053336948698835
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +132,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheres: {fileID: 0}
+--- !u!1 &2758484020547018669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2290522742607675422}
+  - component: {fileID: 3920766423439324266}
+  m_Layer: 6
+  m_Name: TilePlacementPoint (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2290522742607675422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2758484020547018669}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.01, y: 0.01725, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4946521366293259290}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3920766423439324266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2758484020547018669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d938ee8c78e1214468aa8e5b27851f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementHex: {fileID: 7748866392502717939, guid: f75b6d200d1a55f4aa4f88fcaa85b73a, type: 3}
 --- !u!1 &3100481350756531948
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +220,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheres: {fileID: 0}
+--- !u!1 &4854619867883545442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1749921608417788012}
+  - component: {fileID: 1885383129483349829}
+  m_Layer: 6
+  m_Name: TilePlacementPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1749921608417788012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854619867883545442}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.01, y: -0.01725, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4946521366293259290}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1885383129483349829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854619867883545442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d938ee8c78e1214468aa8e5b27851f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementHex: {fileID: 7748866392502717939, guid: f75b6d200d1a55f4aa4f88fcaa85b73a, type: 3}
 --- !u!1 &5507218920731360437
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +308,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheres: {fileID: 0}
+--- !u!1 &5588835615859743920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8467850908270830825}
+  - component: {fileID: 4275598523906872471}
+  m_Layer: 6
+  m_Name: TilePlacementPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8467850908270830825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588835615859743920}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4946521366293259290}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4275598523906872471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588835615859743920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d938ee8c78e1214468aa8e5b27851f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementHex: {fileID: 7748866392502717939, guid: f75b6d200d1a55f4aa4f88fcaa85b73a, type: 3}
 --- !u!1 &5874819373254649537
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheres: {fileID: 0}
 --- !u!1 &7472984361865510481
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +440,94 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheres: {fileID: 0}
+--- !u!1 &7500809467556136117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9084380879422492631}
+  - component: {fileID: 2710493214044170542}
+  m_Layer: 6
+  m_Name: TilePlacementPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9084380879422492631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500809467556136117}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.01, y: 0.01725, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4946521366293259290}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2710493214044170542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500809467556136117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d938ee8c78e1214468aa8e5b27851f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementHex: {fileID: 7748866392502717939, guid: f75b6d200d1a55f4aa4f88fcaa85b73a, type: 3}
+--- !u!1 &8248277456523445246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6704358212186812185}
+  - component: {fileID: 2597105017060610595}
+  m_Layer: 6
+  m_Name: TilePlacementPoint (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6704358212186812185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248277456523445246}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.02, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4946521366293259290}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2597105017060610595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248277456523445246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d938ee8c78e1214468aa8e5b27851f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementHex: {fileID: 7748866392502717939, guid: f75b6d200d1a55f4aa4f88fcaa85b73a, type: 3}
 --- !u!1 &8260681239870441588
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,9 +540,10 @@ GameObject:
   - component: {fileID: 7181971969191427293}
   - component: {fileID: 2462867773699245979}
   - component: {fileID: 8541427837240694055}
+  - component: {fileID: 760260708390052809}
   m_Layer: 6
   m_Name: Tile_Forest
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,7 +555,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8260681239870441588}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -306,9 +565,15 @@ Transform:
   - {fileID: 7997415429867682237}
   - {fileID: 7672155664859097166}
   - {fileID: 3962333643838826694}
+  - {fileID: 9084380879422492631}
+  - {fileID: 8467850908270830825}
+  - {fileID: 1749921608417788012}
+  - {fileID: 6418890784829272516}
+  - {fileID: 6704358212186812185}
+  - {fileID: 2290522742607675422}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &7181971969191427293
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -373,8 +638,21 @@ MeshCollider:
   m_GameObject: {fileID: 8260681239870441588}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1282082824689298556, guid: 3d246822dbd30d44d980f72178390cfe, type: 3}
+--- !u!114 &760260708390052809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8260681239870441588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371dcfbfa1d482a43ab9f9e11f4ad8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlaced: 0

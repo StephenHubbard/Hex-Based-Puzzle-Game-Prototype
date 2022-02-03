@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlacementSphere : MonoBehaviour
+public class TilePlacementHex : MonoBehaviour
 {
     public bool isOccupied = false;
 
     private bool isDestroyed;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         GetComponent<MeshRenderer>().enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isOccupied) {
@@ -24,12 +22,15 @@ public class PlacementSphere : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.GetComponent<PlacementSphere>()) {
-            if (!other.gameObject.GetComponent<PlacementSphere>().isDestroyed) {
+        if (other.gameObject.GetComponent<TilePlacementHex>()) {
+            if (!other.gameObject.GetComponent<TilePlacementHex>().isDestroyed) {
                 isDestroyed = true;
                 Destroy(gameObject);
             }
         }
-    }
 
+        if (other.gameObject.CompareTag("Tile")) {
+            Destroy(gameObject);
+        }
+    }
 }

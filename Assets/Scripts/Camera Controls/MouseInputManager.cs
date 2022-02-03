@@ -67,18 +67,24 @@ public class MouseInputManager : InputManager
         if (Input.GetMouseButtonDown(1)) {
             lastMousePositionY = mp.y;
         } else if (Input.GetMouseButton(1)) {
-            if (mp.y < lastMousePositionY) {
+            if (mp.y < lastMousePositionY && cam.transform.eulerAngles.x < 80) {
                 currentMousePositionY = mp.y;
                 float difference = Mathf.Abs(lastMousePositionY - currentMousePositionY);
                 cam.transform.eulerAngles = new Vector3(cam.transform.eulerAngles.x + (difference * rotateSpeedX), cam.transform.eulerAngles.y, cam.transform.eulerAngles.z);
                 lastMousePositionY = currentMousePositionY;
             }
-            else if (mp.y > lastMousePositionY) {
+            else if (mp.y > lastMousePositionY && cam.transform.eulerAngles.x > -80) {
                 currentMousePositionY = mp.y;
                 float difference = Mathf.Abs(lastMousePositionY - currentMousePositionY);
                 cam.transform.eulerAngles = new Vector3(cam.transform.eulerAngles.x - (difference * rotateSpeedX), cam.transform.eulerAngles.y, cam.transform.eulerAngles.z);
                 lastMousePositionY = currentMousePositionY;
             }
+        }
+
+        if (cam.transform.eulerAngles.x > 81) {
+            cam.transform.eulerAngles = new Vector3(80, cam.transform.eulerAngles.y, cam.transform.eulerAngles.z);
+        } else if (cam.transform.eulerAngles.x < -81) {
+            cam.transform.eulerAngles = new Vector3(-80, cam.transform.eulerAngles.y, cam.transform.eulerAngles.z);
         }
     }
 }

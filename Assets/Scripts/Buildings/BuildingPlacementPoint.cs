@@ -5,8 +5,6 @@ using UnityEngine;
 public class BuildingPlacementPoint : MonoBehaviour
 {
     [SerializeField] GameObject placementSphere;
-    [SerializeField] Transform placementSpheres;
-
 
     void Start()
     {
@@ -14,9 +12,4 @@ public class BuildingPlacementPoint : MonoBehaviour
         newSphere.transform.parent = GameObject.Find("Placement Spheres").transform;
     }
 
-    void Update()
-    {
-    }
-
-    
 }

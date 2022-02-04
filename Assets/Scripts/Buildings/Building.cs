@@ -5,21 +5,15 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public bool isValidPlacement = false;
-
     public GameObject currentPlacementSphere = null;
 
+    [SerializeField] private List<GameObject> nearbyTiles = new List<GameObject>();
+    [SerializeField] private SphereCollider sphereCollider;
 
+    ResourceManager resourceManager;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Awake() {
+        resourceManager = FindObjectOfType<ResourceManager>();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -31,11 +25,26 @@ public class Building : MonoBehaviour
                 isValidPlacement = false;
             }
         }
+
+        if (other.gameObject.GetComponent<Tile>()) {
+            nearbyTiles.Add(other.gameObject);
+        }
+
+        CalcNewResources();
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.gameObject.GetComponent<PlacementSphere>()) {
-            isValidPlacement = false;
+        if (other.gameObject.GetComponent<Tile>()) {
+            nearbyTiles.Remove(other.gameObject);
         }
+    }
+
+
+    public void CalcNewResources() {
+        resourceManager.CalcNewResourcesGainedThisTurn();
+    }
+
+    public List<GameObject> getNearbyTilesList() {
+        return nearbyTiles;
     }
 }

@@ -541,9 +541,9 @@ GameObject:
   - component: {fileID: 2462867773699245979}
   - component: {fileID: 8541427837240694055}
   - component: {fileID: 760260708390052809}
-  - component: {fileID: -5458416980507353255}
+  - component: {fileID: 6005036944144846077}
   m_Layer: 6
-  m_Name: Tile_Grain
+  m_Name: Tile_Brick
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,7 +582,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8260681239870441588}
-  m_Mesh: {fileID: -4585899211967961932, guid: 7053ac08eea477e4fb2c62111f44f5f3, type: 3}
+  m_Mesh: {fileID: -5548485516828772126, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
 --- !u!23 &2462867773699245979
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -603,9 +603,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1580535799172915004, guid: 7053ac08eea477e4fb2c62111f44f5f3, type: 3}
-  - {fileID: -2458301267952359770, guid: 7053ac08eea477e4fb2c62111f44f5f3, type: 3}
-  - {fileID: 1965548878240436506, guid: 7053ac08eea477e4fb2c62111f44f5f3, type: 3}
+  - {fileID: 3145179591731333174, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
+  - {fileID: -1580535799172915004, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
+  - {fileID: 4313855408816845416, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
+  - {fileID: 2455984363856251754, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
+  - {fileID: -4062399477143033605, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -653,9 +655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371dcfbfa1d482a43ab9f9e11f4ad8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileType: {fileID: 11400000, guid: 303e5db80b8e8d647b7d3d602b681bc2, type: 2}
+  tileType: {fileID: 11400000, guid: e5ce76805d0ed814f962fb37fe0f5c13, type: 2}
   isPlaced: 0
---- !u!54 &-5458416980507353255
+--- !u!54 &6005036944144846077
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

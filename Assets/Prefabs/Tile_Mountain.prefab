@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheresParent: {fileID: 0}
 --- !u!1 &778024415132965367
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheresParent: {fileID: 0}
 --- !u!1 &1888738866006182381
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheresParent: {fileID: 0}
 --- !u!1 &2645778907763901564
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheresParent: {fileID: 0}
 --- !u!1 &3577245760859540319
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheresParent: {fileID: 0}
 --- !u!1 &4267003841045075221
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +409,7 @@ GameObject:
   - component: {fileID: 8836156662616461464}
   - component: {fileID: 5913159948739179179}
   - component: {fileID: 3006242575321621508}
+  - component: {fileID: -8232831742108306315}
   m_Layer: 6
   m_Name: Tile_Mountain
   m_TagString: Tile
@@ -511,7 +507,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2185692117926976319, guid: b14d7247f4cd7db4e8d91171dbb3b68f, type: 3}
 --- !u!114 &3006242575321621508
@@ -526,7 +522,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371dcfbfa1d482a43ab9f9e11f4ad8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileType: {fileID: 11400000, guid: 61faea469ec31554fa5757f2ac814272, type: 2}
   isPlaced: 0
+--- !u!54 &-8232831742108306315
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034809376424276301}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8166178489428264350
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
-  placementSpheresParent: {fileID: 0}
 --- !u!1 &8266537897142420943
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8740628389900054516}
   - component: {fileID: 5684431825345241169}
   - component: {fileID: 7568263892144493723}
-  - component: {fileID: 8588494861165816898}
   - component: {fileID: 8150472522299786750}
   - component: {fileID: 1152432470160893392}
+  - component: {fileID: 5895564154599147645}
   m_Layer: 0
   m_Name: Building_1
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8216575187062076750}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.42017877, y: -5.7375994, z: 3.1070688}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8588494861165816898
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216575187062076750}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.005398201, y: 0.003513246, z: 0.0041003115}
-  m_Center: {x: 0, y: 0, z: 0.0020593223}
 --- !u!54 &8150472522299786750
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,3 +117,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isValidPlacement: 0
   currentPlacementSphere: {fileID: 0}
+  nearbyTiles: []
+  sphereCollider: {fileID: 5895564154599147645}
+--- !u!135 &5895564154599147645
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8216575187062076750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.007
+  m_Center: {x: 0, y: 0, z: 0.0020593223}

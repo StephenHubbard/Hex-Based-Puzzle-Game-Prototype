@@ -50,10 +50,10 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, tileMask))
+        if (buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere)
         {
             if (TestIsValidPlacement()) {
-                newBuilding = InstantiateNewBuilding(newBuilding, hit);
+                newBuilding = InstantiateNewBuilding(newBuilding);
             }
         }
         Destroy(buildingPreviewInstance);
@@ -97,8 +97,8 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             }
     }
 
-    private GameObject InstantiateNewBuilding(GameObject newBuilding, RaycastHit hit) {
-        newBuilding = Instantiate(buildingPrefab, hit.point, Quaternion.identity);
+    private GameObject InstantiateNewBuilding(GameObject newBuilding) {
+        newBuilding = Instantiate(buildingPrefab, buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.transform.position, Quaternion.identity);
 
         newBuilding.transform.rotation = buildingPreviewInstance.transform.rotation;
 

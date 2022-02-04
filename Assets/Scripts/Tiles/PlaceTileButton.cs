@@ -89,8 +89,8 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         newTile = Instantiate(tilePrefab, hit.point, Quaternion.identity);
         newTile.GetComponent<Tile>().isPlaced = true;
         newTile.transform.rotation = tilePreviewInstance.transform.rotation;
-        newTile.transform.position = hit.collider.gameObject.transform.position;
         newTile.layer = LayerMask.NameToLayer("Tile");
+        CenterNewTile(newTile, hit);
         newTile.GetComponent<MeshCollider>().enabled = true;
         return newTile;
     }
@@ -105,6 +105,17 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(1)) {
             tilePreviewInstance.transform.Rotate(0, 0, 60);
         }
+    }
+
+    private void CenterNewTile(GameObject newTile, RaycastHit hit) {
+        // hacky way to force perfect positioning instead of correct math in previous function(s);
+        
+        newTile.transform.position = hit.collider.gameObject.transform.position;
+
+        var xValue = Mathf.Round(newTile.transform.position.x);
+        var zValue = Mathf.Round(newTile.transform.position.z / 1.7f) * 1.7f;
+
+        newTile.transform.position = new Vector3(xValue, 0, zValue);
     }
 
 }

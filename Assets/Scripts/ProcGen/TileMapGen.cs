@@ -29,13 +29,10 @@ public class TileMapGen : MonoBehaviour
                 } else {
                     newTile.transform.position = new Vector3(x * tileXOffset + tileXOffset / 2, 0, z * tileZOffset);
                 }
-                SetTileInfo(newTile, x, z);
+                newTile.transform.parent = hexTiles;
             }
         }
     }
 
-    private void SetTileInfo(GameObject GO, int x, int z) {
-        GO.transform.parent = hexTiles;
-        GO.name = "tile (" + x.ToString() + ", " + z.ToString() + ")";
-    }
+    
 }

@@ -14,13 +14,6 @@ public class PlacementSphere : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
     }
 
-    void Update()
-    {
-        if (isOccupied) {
-            Destroy(gameObject);
-        }
-    }
-
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.GetComponent<PlacementSphere>()) {
             if (!other.gameObject.GetComponent<PlacementSphere>().isDestroyed) {

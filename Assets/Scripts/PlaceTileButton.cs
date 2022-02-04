@@ -38,6 +38,7 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         tilePreviewInstance = Instantiate(hexTiles[randomTileNum]);
         tilePrefab = tilePreviewInstance;
         tilePreviewInstance.layer = 0;
+        tilePreviewInstance.GetComponent<MeshRenderer>().enabled = false;
         
         foreach (Transform child in PlacementValidHexesTransformParent)
         {
@@ -78,6 +79,8 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             return;
         }
+
+        tilePreviewInstance.GetComponent<MeshRenderer>().enabled = true;
 
         tilePreviewInstance.transform.position = hit.transform.gameObject.transform.position;
     }

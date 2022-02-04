@@ -11,6 +11,7 @@ public class TilePlacementPoint : MonoBehaviour
         if (transform.parent.GetComponent<Tile>().isPlaced) {
             GameObject newSphere = Instantiate(placementHex, transform.position, transform.rotation);
             newSphere.transform.parent = GameObject.Find("Placement Valid Hexes").transform;
+            Destroy(gameObject);
         }
     }
 

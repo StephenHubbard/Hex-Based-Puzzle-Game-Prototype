@@ -11,7 +11,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     [SerializeField] private GameObject buildingPrefab;
     [SerializeField] private LayerMask tileMask = new LayerMask();
     [SerializeField] private GameObject buildingPreviewInstance;
-    [SerializeField] private Transform placementSpheresParent;
+    [SerializeField] private Transform hexTilesParent;
 
     private Camera mainCamera;
 
@@ -31,7 +31,6 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         UpdateBuildingPreview();
 
-        UpdatePlacementSpheresVisible();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -40,6 +39,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
         buildingPreviewInstance = Instantiate(buildingPrefab);
         buildingPreviewInstance.GetComponent<MeshRenderer>().enabled = false;
+        TogglePlacementSpheresVisible();
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -56,9 +56,9 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 newBuilding = InstantiateNewBuilding(newBuilding, hit);
             }
         }
-
-
         Destroy(buildingPreviewInstance);
+
+        TogglePlacementSpheresHidden();
     }
 
     private void UpdateBuildingPreview()
@@ -77,19 +77,24 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         buildingPreviewInstance.GetComponent<MeshRenderer>().enabled = true;
     }
 
-    private void UpdatePlacementSpheresVisible() {
-        if (buildingPreviewInstance){ 
-            foreach (Transform child in placementSpheresParent)
+    private void TogglePlacementSpheresVisible() {
+            foreach (Transform child in hexTilesParent)
             {
-                child.GetComponent<MeshRenderer>().enabled = true;
-            }
-        } else {
-            foreach (Transform child in placementSpheresParent)
-            {
-                child.GetComponent<MeshRenderer>().enabled = false;
+                foreach (Transform sphere in child)
+                {
+                    sphere.GetComponent<MeshRenderer>().enabled = true;
+                }
             }
         }
 
+    private void TogglePlacementSpheresHidden() {
+        foreach (Transform child in hexTilesParent)
+            {
+                foreach (Transform sphere in child)
+                {
+                    sphere.GetComponent<MeshRenderer>().enabled = false;
+                }
+            }
     }
 
     private GameObject InstantiateNewBuilding(GameObject newBuilding, RaycastHit hit) {
@@ -98,9 +103,9 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         newBuilding.transform.rotation = buildingPreviewInstance.transform.rotation;
 
         buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.GetComponent<PlacementSphere>().isOccupied = true;
+        Destroy(buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.GetComponent<PlacementSphere>().gameObject);
         Transform placementSphereTransform = buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.transform;
         newBuilding.transform.position = placementSphereTransform.position;
-
         return newBuilding;
     }
 

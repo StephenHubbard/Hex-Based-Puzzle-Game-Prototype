@@ -8,8 +8,10 @@ public class BuildingPlacementPoint : MonoBehaviour
 
     void Start()
     {
-        GameObject newSphere = Instantiate(placementSphere, transform.position, transform.rotation);
-        newSphere.transform.parent = GameObject.Find("Placement Spheres").transform;
+        if (transform.parent.GetComponent<Tile>().isPlaced) {
+            GameObject newSphere = Instantiate(placementSphere, transform.position, transform.rotation);
+            newSphere.transform.parent = transform.parent;
+            Destroy(gameObject);
+        }
     }
-
 }

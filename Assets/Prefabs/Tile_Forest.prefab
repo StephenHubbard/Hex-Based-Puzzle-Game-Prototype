@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
+  placementSpheresParent: {fileID: 0}
 --- !u!1 &1336053336948698835
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
+  placementSpheresParent: {fileID: 0}
 --- !u!1 &2758484020547018669
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
+  placementSpheresParent: {fileID: 0}
 --- !u!1 &4854619867883545442
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
+  placementSpheresParent: {fileID: 0}
 --- !u!1 &5588835615859743920
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
+  placementSpheresParent: {fileID: 0}
 --- !u!1 &7472984361865510481
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementSphere: {fileID: 3129406195084915854, guid: cf0561d8a12d16d46842a7549705a29c, type: 3}
+  placementSpheresParent: {fileID: 0}
 --- !u!1 &7500809467556136117
 GameObject:
   m_ObjectHideFlags: 0

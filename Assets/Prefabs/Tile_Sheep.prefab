@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 760260708390052809}
   - component: {fileID: 6005036944144846077}
   m_Layer: 6
-  m_Name: Tile_Brick
+  m_Name: Tile_Sheep
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,7 +582,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8260681239870441588}
-  m_Mesh: {fileID: -5548485516828772126, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
+  m_Mesh: {fileID: 7931445523932261248, guid: d64150b51b814434bbe8910b80338ecf, type: 3}
 --- !u!23 &2462867773699245979
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -603,11 +603,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3145179591731333174, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
-  - {fileID: -1580535799172915004, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
-  - {fileID: 4313855408816845416, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
-  - {fileID: 2455984363856251754, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
-  - {fileID: -4062399477143033605, guid: 8b6fddaf248f30342b4711c2b8042db5, type: 3}
+  - {fileID: -1580535799172915004, guid: d64150b51b814434bbe8910b80338ecf, type: 3}
+  - {fileID: 330942445973026527, guid: d64150b51b814434bbe8910b80338ecf, type: 3}
+  - {fileID: -8779123733071239245, guid: d64150b51b814434bbe8910b80338ecf, type: 3}
+  - {fileID: -2811752409513173763, guid: d64150b51b814434bbe8910b80338ecf, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -655,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371dcfbfa1d482a43ab9f9e11f4ad8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileType: {fileID: 11400000, guid: e3559cab264e0b148902f368ddda1f73, type: 2}
+  tileType: {fileID: 11400000, guid: 6452aaaca8c2acd4ebf6bafc202763f1, type: 2}
   isPlaced: 0
 --- !u!54 &6005036944144846077
 Rigidbody:

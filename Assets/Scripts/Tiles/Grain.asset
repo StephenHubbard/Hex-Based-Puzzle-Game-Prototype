@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Grain
   m_EditorClassIdentifier: 
   tileName: Grain
+  tileIndexNum: 1
   TreeValue: 0
   SheepValue: 0
   GrainValue: 1

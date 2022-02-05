@@ -6,6 +6,8 @@ using UnityEngine;
 public class TileType : ScriptableObject
 {
     public string tileName;
+    public GameObject tilePrefab;
+    public int tileIndexNum;
     public int TreeValue;
     public int SheepValue;
     public int GrainValue;

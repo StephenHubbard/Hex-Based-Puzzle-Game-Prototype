@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour
     private void Start() {
         if (isPlaced) {
             transform.parent = GameObject.Find("Hex Tiles").transform;
+            gameObject.name = "tile (" + transform.position.x.ToString() + ", " + transform.position.z.ToString() + ")";
         }
-        gameObject.name = "tile (" + transform.position.x.ToString() + ", " + transform.position.z.ToString() + ")";
     }
 }

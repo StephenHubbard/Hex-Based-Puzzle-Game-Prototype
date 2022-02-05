@@ -11,14 +11,17 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     [SerializeField] GameObject[] hexTiles;
     [SerializeField] private LayerMask validTilePlacementMask = new LayerMask();
     [SerializeField] private Transform PlacementValidHexesTransformParent;
+    
 
     private GameObject tilePrefab;
     private GameObject tilePreviewInstance;
-
+    
+    private UpcomingTiles upcomingTiles;
     private Camera mainCamera;
 
     private void Awake() {
         mainCamera = Camera.main;
+        upcomingTiles = FindObjectOfType<UpcomingTiles>();
     }
 
     void Start()
@@ -35,7 +38,7 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public void OnPointerDown(PointerEventData eventData)
     {
         int randomTileNum = Random.Range(0, hexTiles.Length);
-        tilePreviewInstance = Instantiate(hexTiles[randomTileNum]);
+        tilePreviewInstance = Instantiate(FindObjectOfType<UI_SpinTile>().tileType.tilePrefab);
         tilePrefab = tilePreviewInstance;
         tilePreviewInstance.layer = 0;
         tilePreviewInstance.GetComponent<MeshRenderer>().enabled = false;
@@ -58,6 +61,7 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             if (TestIsValidPlacement()) {
                 newTile = InstantiateNewTile(newTile, hit);
+                upcomingTiles.getNewTile();
             }
         }
 
@@ -67,6 +71,7 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         }
 
         Destroy(tilePreviewInstance);
+
     }
 
     private void UpdateTilePreviewInstance()

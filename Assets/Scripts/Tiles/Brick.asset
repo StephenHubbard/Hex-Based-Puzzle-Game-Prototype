@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Brick
   m_EditorClassIdentifier: 
   tileName: Brick
+  tileIndexNum: 3
   TreeValue: 0
   SheepValue: 0
   GrainValue: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mountain
   m_EditorClassIdentifier: 
   tileName: Mountain
+  tileIndexNum: 2
   TreeValue: 0
   SheepValue: 0
   GrainValue: 0

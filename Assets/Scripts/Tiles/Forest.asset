@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: 
   tileName: Forest
+  tilePrefab: {fileID: 8260681239870441588, guid: 7278ee897c82f0b40b44e699be98f49e, type: 3}
+  tileIndexNum: 0
   TreeValue: 1
   SheepValue: 0
   GrainValue: 0
   BrickValue: 0
-  OreValue: 0
+  MountainValue: 0

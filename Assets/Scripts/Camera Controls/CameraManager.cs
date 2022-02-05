@@ -67,6 +67,7 @@ public class CameraManager : MonoBehaviour
         frameZoom += zoomAmount;
     }
 
+
     private void LateUpdate() {
         if (frameMove != Vector3.zero) {
             Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y, frameMove.z * inOutSpeed);

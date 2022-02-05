@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Brick
   m_EditorClassIdentifier: 
   tileName: Brick
+  tilePrefab: {fileID: 8260681239870441588, guid: 7800002ea6f62f7458f17f75cae2f0af, type: 3}
   tileIndexNum: 3
   TreeValue: 0
   SheepValue: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mountain
   m_EditorClassIdentifier: 
   tileName: Mountain
+  tilePrefab: {fileID: 7034809376424276301, guid: 06620f0104ee93442aeb129d6e3dd210, type: 3}
   tileIndexNum: 2
   TreeValue: 0
   SheepValue: 0

@@ -9,12 +9,17 @@ public class UpcomingTiles : MonoBehaviour
     [SerializeField] private GameObject activeTile;
 
     private void Awake() {
+    }
+
+    private void Start() {
         foreach (Transform child in transform)
         {
             if (child.transform.gameObject.GetComponent<UI_SpinTile>()) {
                 activeTile = child.gameObject;
             }
         }
+
+        getNewTile();
     }
 
     public void getNewTile() {

@@ -39,6 +39,7 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         int randomTileNum = Random.Range(0, hexTiles.Length);
         tilePreviewInstance = Instantiate(FindObjectOfType<UI_SpinTile>().tileType.tilePrefab);
+        tilePreviewInstance.GetComponent<Tile>().resourceCounterCanvas.SetActive(false);
         tilePrefab = tilePreviewInstance;
         tilePreviewInstance.layer = 0;
         tilePreviewInstance.GetComponent<MeshRenderer>().enabled = false;

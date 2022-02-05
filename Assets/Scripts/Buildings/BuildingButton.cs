@@ -82,7 +82,10 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             {
                 foreach (Transform sphere in child)
                 {
-                    sphere.GetComponent<MeshRenderer>().enabled = true;
+                    // for world space canvas ui prefab
+                    if (sphere.GetComponent<MeshRenderer>()) {
+                        sphere.GetComponent<MeshRenderer>().enabled = true;
+                    }
                 }
             }
         }
@@ -92,7 +95,10 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             {
                 foreach (Transform sphere in child)
                 {
-                    sphere.GetComponent<MeshRenderer>().enabled = false;
+                    // for world space canvas ui prefab
+                    if (sphere.GetComponent<MeshRenderer>()) {
+                        sphere.GetComponent<MeshRenderer>().enabled = false;
+                    }
                 }
             }
     }

@@ -36,11 +36,11 @@ public class ResourceManager : MonoBehaviour
         totalBrickText.text = totalBrick.ToString();
         totalSheepText.text = totalSheep.ToString();
 
-        newTotalForestText.text = forestGainedThisTurn.ToString();
-        newTotalGrainText.text = grainGainedThisTurn.ToString();
-        newTotalMountainText.text = mountainGainedThisTurn.ToString();
-        newTotalBrickText.text = brickGainedThisTurn.ToString();
-        newTotalSheepText.text = sheepGainedThisTurn.ToString();
+        newTotalForestText.text = "+ " + forestGainedThisTurn.ToString();
+        newTotalGrainText.text = "+ " + grainGainedThisTurn.ToString();
+        newTotalMountainText.text = "+ " + mountainGainedThisTurn.ToString();
+        newTotalBrickText.text = "+ " + brickGainedThisTurn.ToString();
+        newTotalSheepText.text = "+ " + sheepGainedThisTurn.ToString();
     }
 
     public void EndTurnResourceCalc() {

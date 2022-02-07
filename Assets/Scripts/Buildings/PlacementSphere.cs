@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlacementSphere : MonoBehaviour
 {
     public bool isOccupied = false;
+    public bool isNearRoad = false;
 
     private bool isDestroyed;
+
 
 
     void Start()

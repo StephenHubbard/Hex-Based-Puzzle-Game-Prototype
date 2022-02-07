@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8166935543194711523}
   - component: {fileID: -4678279359008046296}
   - component: {fileID: -8668817041033026675}
-  - component: {fileID: -2752861302971031279}
+  - component: {fileID: -3775625269742644849}
+  - component: {fileID: 1469360599917421210}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -103,7 +104,6 @@ MonoBehaviour:
   currentPlacementSphere: {fileID: 0}
   currentPlacementRoad: {fileID: 0}
   nearbyTiles: []
-  sphereCollider: {fileID: -2752861302971031279}
   buildingType: {fileID: 11400000, guid: b87a24830ac31d144b7002345105a1f4, type: 2}
 --- !u!54 &-8668817041033026675
 Rigidbody:
@@ -121,8 +121,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &-2752861302971031279
-SphereCollider:
+--- !u!114 &-3775625269742644849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662370000024261686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e8c7c8526dd5b45b31f544bf05544a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlaced: 0
+--- !u!65 &1469360599917421210
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,5 +145,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.015
+  m_Size: {x: 0.019814849, y: 0.052559543, z: 0.00364767}
   m_Center: {x: 0.000109801535, y: 0.00003072712, z: -0.00014660516}

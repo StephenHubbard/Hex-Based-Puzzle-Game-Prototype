@@ -93,9 +93,10 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             {
                 foreach (Transform sphere in child)
                 {
-                    // for world space canvas ui prefab
-                    if (sphere.GetComponent<MeshRenderer>()) {
-                        sphere.GetComponent<MeshRenderer>().enabled = true;
+                    if (sphere.gameObject.GetComponent<PlacementSphere>()) {
+                        if (sphere.gameObject.GetComponent<PlacementSphere>().isNearRoad) {
+                            sphere.GetComponent<MeshRenderer>().enabled = true;
+                        }
                     }
                 }
             }
@@ -147,6 +148,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             Transform placementRoadTransform = buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad.transform;
             newBuilding.transform.position = placementRoadTransform.position;
             newBuilding.GetComponent<Building>().whatKindOfBuilding();
+            newBuilding.GetComponent<Road>().isPlaced = true;
             BuyBuilding();
             return newBuilding;
         } else {

@@ -10,14 +10,19 @@ public class TileMapGen : MonoBehaviour
     [SerializeField] float tileXOffset = 1f;
     [SerializeField] float tileZOffset = 1f;
     [SerializeField] Transform hexTiles;
+    [SerializeField] private PlacementSphere[] placementSpheres;
+
+    private void Awake() {
+        CreateHexTileMap();
+    }
 
     private void Start() {
-        CreateHexTileMap();
+        MakeSomePlacementSpheresValidPlacement();
     }    
 
     private void CreateHexTileMap() {
-        for (int x = 0; x <= mapWidth; x++) {
-            for (int z = 0; z <= mapHeight; z++)
+        for (int x = 0; x < mapWidth; x++) {
+            for (int z = 0; z < mapHeight; z++)
             {
                 int randomTileNum = Random.Range(0, hexTilePrefabs.Length);
                 GameObject newTile = Instantiate(hexTilePrefabs[randomTileNum]);
@@ -32,6 +37,11 @@ public class TileMapGen : MonoBehaviour
                 newTile.transform.parent = hexTiles;
             }
         }
+    }
+
+    public void MakeSomePlacementSpheresValidPlacement() {
+        placementSpheres = FindObjectsOfType<PlacementSphere>();
+
     }
 
     

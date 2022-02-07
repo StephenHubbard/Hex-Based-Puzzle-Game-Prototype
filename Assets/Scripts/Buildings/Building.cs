@@ -9,7 +9,6 @@ public class Building : MonoBehaviour
     public GameObject currentPlacementRoad = null;
 
     [SerializeField] private List<GameObject> nearbyTiles = new List<GameObject>();
-    [SerializeField] private SphereCollider sphereCollider;
     [SerializeField] public BuildingTypeSO buildingType;
 
     ResourceManager resourceManager;
@@ -31,7 +30,7 @@ public class Building : MonoBehaviour
         } else {
             if (other.gameObject.GetComponent<PlacementSphere>()) {
                 currentPlacementSphere = other.gameObject;
-                if (currentPlacementSphere.GetComponent<PlacementSphere>().isOccupied == false) {
+                if (currentPlacementSphere.GetComponent<PlacementSphere>().isOccupied == false && currentPlacementSphere.GetComponent<PlacementSphere>().isNearRoad) {
                     isValidPlacement = true;
                 } else {
                     isValidPlacement = false;

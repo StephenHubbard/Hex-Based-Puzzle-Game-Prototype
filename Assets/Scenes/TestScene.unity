@@ -541,6 +541,9 @@ MonoBehaviour:
   resourceManager: {fileID: 1787073023}
   shrineManager: {fileID: 1278010499}
   hexTiles: {fileID: 254670144}
+  placementValidHexes: {fileID: 2086807786}
+  mountainPrefab: {fileID: 7034809376424276301, guid: 06620f0104ee93442aeb129d6e3dd210, type: 3}
+  amountOfMountainsToSpawn: 1
 --- !u!1 &187639857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 16.6, y: 0.00000047683716}
+  m_AnchoredPosition: {x: 16.600002, y: 0.00000047683716}
   m_SizeDelta: {x: 50.795, y: 34.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630597982
@@ -2285,8 +2288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c507aa74a051ed4387747aacd3c23a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapWidth: 3
-  mapHeight: 3
+  mapWidth: 4
+  mapHeight: 5
   hexTilePrefabs:
   - {fileID: 7034809376424276301, guid: 06620f0104ee93442aeb129d6e3dd210, type: 3}
   - {fileID: 8260681239870441588, guid: 7278ee897c82f0b40b44e699be98f49e, type: 3}
@@ -2296,7 +2299,7 @@ MonoBehaviour:
   tileXOffset: 2
   tileZOffset: 1.7
   hexTiles: {fileID: 254670144}
-  placementSpheres: []
+  isScriptActive: 1
 --- !u!1 &894455903
 GameObject:
   m_ObjectHideFlags: 0

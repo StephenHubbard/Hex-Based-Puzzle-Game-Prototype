@@ -10,16 +10,16 @@ public class TileMapGen : MonoBehaviour
     [SerializeField] float tileXOffset = 1f;
     [SerializeField] float tileZOffset = 1f;
     [SerializeField] Transform hexTiles;
-    [SerializeField] private PlacementSphere[] placementSpheres;
+
+    [SerializeField] private bool isScriptActive = false;
 
     private void Awake() {
-        CreateHexTileMap();
+        if (isScriptActive) {
+            CreateHexTileMap();
+        }
     }
 
-    private void Start() {
-        MakeSomePlacementSpheresValidPlacement();
-    }    
-
+    
     private void CreateHexTileMap() {
         for (int x = 0; x < mapWidth; x++) {
             for (int z = 0; z < mapHeight; z++)
@@ -32,17 +32,11 @@ public class TileMapGen : MonoBehaviour
                 if(z % 2 == 0) {
                     newTile.transform.position = new Vector3(x * tileXOffset, 0, z * tileZOffset);
                 } else {
-                    newTile.transform.position = new Vector3(x * tileXOffset + tileXOffset / 2, 0, z * tileZOffset);
+                    newTile.transform.position = new Vector3(x * tileXOffset + 1, 0, z * tileZOffset);
                 }
                 newTile.transform.parent = hexTiles;
             }
         }
     }
-
-    public void MakeSomePlacementSpheresValidPlacement() {
-        placementSpheres = FindObjectsOfType<PlacementSphere>();
-
-    }
-
     
 }

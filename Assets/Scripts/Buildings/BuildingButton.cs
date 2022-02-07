@@ -8,24 +8,20 @@ using UnityEngine.InputSystem;
 
 public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] private GameObject buildingPrefab;
     [SerializeField] private LayerMask tileMask = new LayerMask();
     [SerializeField] private GameObject buildingPreviewInstance;
     [SerializeField] private Transform hexTilesParent;
+    [SerializeField] private BuildingTypeSO buildingType;
 
     private Camera mainCamera;
-
+    private ResourceManager resourceManager;
 
 
     private void Awake() {
         mainCamera = Camera.main;
+        resourceManager = FindObjectOfType<ResourceManager>();
     }
 
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -37,9 +33,16 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         if (eventData.button != PointerEventData.InputButton.Left) {return;}
 
-        buildingPreviewInstance = Instantiate(buildingPrefab);
-        buildingPreviewInstance.GetComponent<MeshRenderer>().enabled = false;
-        TogglePlacementSpheresVisible();
+        if (CanAffordBuilding()) {
+            buildingPreviewInstance = Instantiate(buildingType.buildingPrefab);
+            buildingPreviewInstance.GetComponent<MeshRenderer>().enabled = false;
+            if (buildingType.buildingName == "Road") {
+                TogglePlacementRoadsVisible();
+            } else {
+                TogglePlacementSpheresVisible();
+            }
+        } 
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -50,15 +53,18 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-        if (buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere)
+        if (buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere || buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad)
         {
             if (TestIsValidPlacement()) {
                 newBuilding = InstantiateNewBuilding(newBuilding);
             }
         }
+
+
         Destroy(buildingPreviewInstance);
 
         TogglePlacementSpheresHidden();
+        TogglePlacementRoadsHidden();
     }
 
     private void UpdateBuildingPreview()
@@ -75,6 +81,11 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         buildingPreviewInstance.transform.position = hit.point;
 
         buildingPreviewInstance.GetComponent<MeshRenderer>().enabled = true;
+
+        if (buildingType.buildingName == "Road" && buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad) {
+            buildingPreviewInstance.transform.rotation = buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad.transform.rotation;
+        }
+
     }
 
     private void TogglePlacementSpheresVisible() {
@@ -103,16 +114,53 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             }
     }
 
+    private void TogglePlacementRoadsVisible() {
+        foreach (Transform hexTile in hexTilesParent)
+        {
+            Transform thisTilesRoadParent = hexTile.GetComponent<Tile>().placementRoadParent;
+
+            foreach (Transform roadInstance in thisTilesRoadParent)
+            {
+                roadInstance.GetComponent<MeshRenderer>().enabled = true;
+            }
+        }
+    }
+
+    private void TogglePlacementRoadsHidden() {
+        foreach (Transform hexTile in hexTilesParent)
+        {
+            Transform thisTilesRoadParent = hexTile.GetComponent<Tile>().placementRoadParent;
+
+            foreach (Transform roadInstance in thisTilesRoadParent)
+            {
+                roadInstance.GetComponent<MeshRenderer>().enabled = false;
+            }
+        }
+    }
+
     private GameObject InstantiateNewBuilding(GameObject newBuilding) {
-        newBuilding = Instantiate(buildingPrefab, buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.transform.position, Quaternion.identity);
+        if (buildingType.buildingName == "Road") {
+            newBuilding = Instantiate(buildingType.buildingPrefab, buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad.transform.position, Quaternion.identity);
+            newBuilding.transform.rotation = buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad.transform.rotation;
+            buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad.GetComponent<PlacementRoad>().isOccupied = true;
+            Destroy(buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad.GetComponent<PlacementRoad>().gameObject);
+            Transform placementRoadTransform = buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad.transform;
+            newBuilding.transform.position = placementRoadTransform.position;
+            newBuilding.GetComponent<Building>().whatKindOfBuilding();
+            BuyBuilding();
+            return newBuilding;
+        } else {
+            newBuilding = Instantiate(buildingType.buildingPrefab, buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.transform.position, Quaternion.identity);
+            newBuilding.transform.rotation = buildingPreviewInstance.transform.rotation;
+            buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.GetComponent<PlacementSphere>().isOccupied = true;
+            Destroy(buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.GetComponent<PlacementSphere>().gameObject);
+            Transform placementSphereTransform = buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.transform;
+            newBuilding.transform.position = placementSphereTransform.position;
+            newBuilding.GetComponent<Building>().whatKindOfBuilding();
+            BuyBuilding();
+            return newBuilding;
+        }
 
-        newBuilding.transform.rotation = buildingPreviewInstance.transform.rotation;
-
-        buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.GetComponent<PlacementSphere>().isOccupied = true;
-        Destroy(buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.GetComponent<PlacementSphere>().gameObject);
-        Transform placementSphereTransform = buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.transform;
-        newBuilding.transform.position = placementSphereTransform.position;
-        return newBuilding;
     }
 
     private bool TestIsValidPlacement() {
@@ -121,5 +169,24 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         } else {
             return false;
         }
+    }
+
+    private bool CanAffordBuilding() {
+        if (resourceManager.totalForest >= buildingType.ForestNeededToBuy &&
+            resourceManager.totalGrain >= buildingType.GrainNeededToBuy &&
+            resourceManager.totalSheep >= buildingType.SheepNeededToBuy &&
+            resourceManager.totalBrick >= buildingType.BrickNeededToBuy) {
+                return true;
+            } else {
+                print("can NOT afford building");
+                return false;
+            }
+    }
+
+    private void BuyBuilding() {
+        resourceManager.totalForest -= buildingType.ForestNeededToBuy;
+        resourceManager.totalGrain -= buildingType.GrainNeededToBuy;
+        resourceManager.totalSheep -= buildingType.SheepNeededToBuy;
+        resourceManager.totalBrick -= buildingType.BrickNeededToBuy;
     }
 }

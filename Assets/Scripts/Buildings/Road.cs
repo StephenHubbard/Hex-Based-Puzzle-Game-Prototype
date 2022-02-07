@@ -5,6 +5,7 @@ using UnityEngine;
 public class Road : MonoBehaviour
 {
     public bool isPlaced = false;
+    public bool isValidRoadPlacement = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,12 @@ public class Road : MonoBehaviour
         if (isPlaced) {
             if (other.gameObject.GetComponent<PlacementSphere>()) {
                 other.gameObject.GetComponent<PlacementSphere>().isNearRoad = true;
+            }
+        }
+
+        if (other.gameObject.GetComponent<Road>()) {
+            if (isPlaced && !other.gameObject.GetComponent<Road>().isPlaced) {
+                other.gameObject.GetComponent<Road>().isValidRoadPlacement = true;
             }
         }
     }

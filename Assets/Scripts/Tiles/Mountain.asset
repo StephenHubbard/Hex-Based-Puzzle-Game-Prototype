@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f320deb2061d4e48bcd5c050adf3d66, type: 3}
-  m_Name: Brick
+  m_Name: Mountain
   m_EditorClassIdentifier: 
-  tileName: Brick
-  tilePrefab: {fileID: 8260681239870441588, guid: 7800002ea6f62f7458f17f75cae2f0af, type: 3}
-  tileIndexNum: 2
+  tileName: Mountain
+  tilePrefab: {fileID: 7034809376424276301, guid: 06620f0104ee93442aeb129d6e3dd210, type: 3}
+  tileIndexNum: 4
   TreeValue: 0
   SheepValue: 0
   GrainValue: 0
-  BrickValue: 1
+  BrickValue: 0
   MountainValue: 0

@@ -33,7 +33,6 @@ public class ShrineManager : MonoBehaviour
     }
 
     public void ResetShrineTimer() {
-        print("wizard tower placed");
         shrineTimerTurnsLeft += 10;
     }
 

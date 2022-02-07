@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371dcfbfa1d482a43ab9f9e11f4ad8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileType: {fileID: 0}
+  tileType: {fileID: 11400000, guid: 61faea469ec31554fa5757f2ac814272, type: 2}
   resourceCounterCanvas: {fileID: 0}
   resourceTickCounterText: {fileID: 0}
   amountOfResourceTickCounter: 0

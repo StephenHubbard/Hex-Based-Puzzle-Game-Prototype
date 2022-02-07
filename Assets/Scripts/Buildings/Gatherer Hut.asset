@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Gatherer Hut
   buildingPrefab: {fileID: 9076115011973840730, guid: cc23f93edb7e95946b04e9279d198e15, type: 3}
+  isRoad: 0
   ForestNeededToBuy: 0
   GrainNeededToBuy: 1
   BrickNeededToBuy: 1
   SheepNeededToBuy: 0
+  PopulationNeedeToBuy: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: Sheep
   tilePrefab: {fileID: 8260681239870441588, guid: 6f2f0a11a60c8674d9442ffafe2ddd01, type: 3}
-  tileIndexNum: 4
+  tileIndexNum: 3
   TreeValue: 0
   SheepValue: 1
   GrainValue: 0

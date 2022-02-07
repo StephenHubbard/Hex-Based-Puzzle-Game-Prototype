@@ -11,6 +11,10 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     [SerializeField] GameObject[] hexTiles;
     [SerializeField] private LayerMask validTilePlacementMask = new LayerMask();
     [SerializeField] private Transform PlacementValidHexesTransformParent;
+    [SerializeField] private int sheepCost = 1;
+    [SerializeField] private int brickCost = 1;
+    [SerializeField] private GameObject costImageContainer;
+
     
 
     private GameObject tilePrefab;
@@ -19,9 +23,12 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     private UpcomingTiles upcomingTiles;
     private Camera mainCamera;
 
+    private ResourceManager resourceManager;
+
     private void Awake() {
         mainCamera = Camera.main;
         upcomingTiles = FindObjectOfType<UpcomingTiles>();
+        resourceManager = FindObjectOfType<ResourceManager>();
     }
 
     void Start()
@@ -34,20 +41,37 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         RotateTile();
     }
 
+    public void OnHoverOver() {
+        costImageContainer.SetActive(true);
+    }
+
+    public void OnHoverExit() {
+        costImageContainer.SetActive(false);
+    }
+
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        int randomTileNum = Random.Range(0, hexTiles.Length);
-        tilePreviewInstance = Instantiate(FindObjectOfType<UI_SpinTile>().tileType.tilePrefab);
-        tilePreviewInstance.GetComponent<Tile>().resourceCounterCanvas.SetActive(false);
-        tilePrefab = tilePreviewInstance;
-        tilePreviewInstance.layer = 0;
-        tilePreviewInstance.GetComponent<MeshRenderer>().enabled = false;
-        
-        foreach (Transform child in PlacementValidHexesTransformParent)
-        {
-            child.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        if (eventData.button != PointerEventData.InputButton.Left) {return;}
+
+        if (CanAffordTile()) {
+            int randomTileNum = Random.Range(0, hexTiles.Length);
+            Vector3 spawnPoint = new Vector3(0, 0, -10);
+            tilePreviewInstance = Instantiate(FindObjectOfType<UI_SpinTile>().tileType.tilePrefab, spawnPoint, FindObjectOfType<UI_SpinTile>().tileType.tilePrefab.transform.rotation);
+            
+            if (tilePreviewInstance.GetComponent<Tile>().resourceCounterCanvas) {
+                tilePreviewInstance.GetComponent<Tile>().resourceCounterCanvas.SetActive(false);
+            }
+            tilePrefab = tilePreviewInstance;
+            tilePreviewInstance.layer = 0;
+            tilePreviewInstance.GetComponent<MeshRenderer>().enabled = false;
+            
+            foreach (Transform child in PlacementValidHexesTransformParent)
+            {
+                child.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            }
         }
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -98,6 +122,7 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         newTile.layer = LayerMask.NameToLayer("Tile");
         CenterNewTile(newTile, hit);
         newTile.GetComponent<MeshCollider>().enabled = true;
+        BuyTile();
         return newTile;
     }
 
@@ -122,6 +147,20 @@ public class PlaceTileButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         var zValue = Mathf.Round(newTile.transform.position.z / 1.7f) * 1.7f;
 
         newTile.transform.position = new Vector3(xValue, 0, zValue);
+    }
+
+    private bool CanAffordTile() {
+        if (resourceManager.totalSheep >= sheepCost && resourceManager.totalBrick >= brickCost) {
+            return true;
+        } else {
+            print("can NOT afford tile");
+            return false;
+        }
+    }
+
+    private void BuyTile() {
+        resourceManager.totalSheep -= sheepCost;
+        resourceManager.totalBrick -= brickCost;
     }
 
 }

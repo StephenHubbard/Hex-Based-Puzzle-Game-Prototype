@@ -5,6 +5,7 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public bool isValidPlacement = false;
+    public bool isBuildingPlaced = false;
     public GameObject currentPlacementSphere = null;
     public GameObject currentPlacementRoad = null;
 
@@ -18,38 +19,39 @@ public class Building : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (buildingType.buildingName == "Road") {
-            if (other.gameObject.GetComponent<PlacementRoad>()) {
-                currentPlacementRoad = other.gameObject;
-                if (currentPlacementRoad.GetComponent<PlacementRoad>().isOccupied == false) {
-                    isValidPlacement = true;
-                } else {
-                    isValidPlacement = false;
-                }
-            }
-        } else {
-            if (other.gameObject.GetComponent<PlacementSphere>()) {
-                currentPlacementSphere = other.gameObject;
-                if (currentPlacementSphere.GetComponent<PlacementSphere>().isOccupied == false && currentPlacementSphere.GetComponent<PlacementSphere>().isNearRoad) {
-                    isValidPlacement = true;
-                } else {
-                    isValidPlacement = false;
-                }
+        if (other.gameObject.GetComponent<PlacementSphere>()) {
+            currentPlacementSphere = other.gameObject;
+            if (currentPlacementSphere.GetComponent<PlacementSphere>().isOccupied == false && currentPlacementSphere.GetComponent<PlacementSphere>().isNearRoad) {
+                isValidPlacement = true;
+            } else {
+                isValidPlacement = false;
             }
         }
 
 
         if (other.gameObject.GetComponent<Tile>() && !other.gameObject.GetComponent<Tile>().isMountain) {
             nearbyTiles.Add(other.gameObject);
+        } else if (isBuildingPlaced && !buildingType.isRoad && other.gameObject.GetComponent<Road>() && !other.gameObject.GetComponent<Road>().isPlaced) {
+            other.gameObject.GetComponent<Road>().isValidRoadPlacement = true;
         }
 
         CalcNewResources();
     }
 
+    public void DesignateSelectedRoad(GameObject hitRoadFromRaycast) {
+        currentPlacementRoad = hitRoadFromRaycast;
+
+        if (currentPlacementRoad.GetComponent<PlacementRoad>().isOccupied == false && currentPlacementRoad.GetComponent<Road>().isValidRoadPlacement) {
+                isValidPlacement = true;
+            } else {
+                isValidPlacement = false;
+            }
+    }
+
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.GetComponent<Tile>()) {
             nearbyTiles.Remove(other.gameObject);
-        }
+        } 
     }
 
 

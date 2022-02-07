@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Wizard Tower
   buildingPrefab: {fileID: 1815516348085300823, guid: 54d713fce3e85e243ab14fa8a70a2f25, type: 3}
+  isRoad: 0
   ForestNeededToBuy: 1
-  GrainNeededToBuy: 0
+  GrainNeededToBuy: 1
   BrickNeededToBuy: 0
-  SheepNeededToBuy: 1
+  SheepNeededToBuy: 0
+  PopulationNeedeToBuy: 0

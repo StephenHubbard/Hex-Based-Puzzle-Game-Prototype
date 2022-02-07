@@ -5,7 +5,7 @@ using TMPro;
 
 public class PopulationManager : MonoBehaviour
 {
-    [SerializeField] private int currentAvailablePopulation;
+    [SerializeField] public int currentAvailablePopulation;
     [SerializeField] private int totalPopulation;
 
     [SerializeField] private TMP_Text populationText;

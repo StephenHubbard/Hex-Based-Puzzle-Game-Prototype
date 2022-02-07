@@ -12,21 +12,31 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     [SerializeField] private GameObject buildingPreviewInstance;
     [SerializeField] private Transform hexTilesParent;
     [SerializeField] private BuildingTypeSO buildingType;
+    [SerializeField] private GameObject costImageContainer;
 
     private Camera mainCamera;
     private ResourceManager resourceManager;
+    private PopulationManager populationManager;
 
 
     private void Awake() {
         mainCamera = Camera.main;
         resourceManager = FindObjectOfType<ResourceManager>();
+        populationManager = FindObjectOfType<PopulationManager>();
     }
 
 
     void Update()
     {
         UpdateBuildingPreview();
+    }
 
+    public void OnHoverOver() {
+        costImageContainer.SetActive(true);
+    }
+
+    public void OnHoverExit() {
+        costImageContainer.SetActive(false);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -80,6 +90,10 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
         buildingPreviewInstance.transform.position = hit.point;
 
+        if (hit.transform.gameObject.GetComponent<Road>() && buildingType.isRoad) {
+            buildingPreviewInstance.GetComponent<Building>().DesignateSelectedRoad(hit.transform.gameObject);
+        }
+
         buildingPreviewInstance.GetComponent<MeshRenderer>().enabled = true;
 
         if (buildingType.buildingName == "Road" && buildingPreviewInstance.GetComponent<Building>().currentPlacementRoad) {
@@ -122,7 +136,9 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
             foreach (Transform roadInstance in thisTilesRoadParent)
             {
-                roadInstance.GetComponent<MeshRenderer>().enabled = true;
+                if (roadInstance.GetComponent<Road>().isValidRoadPlacement) {
+                    roadInstance.GetComponent<MeshRenderer>().enabled = true;
+                }
             }
         }
     }
@@ -149,6 +165,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             newBuilding.transform.position = placementRoadTransform.position;
             newBuilding.GetComponent<Building>().whatKindOfBuilding();
             newBuilding.GetComponent<Road>().isPlaced = true;
+            newBuilding.GetComponent<Building>().isBuildingPlaced = true;
             BuyBuilding();
             return newBuilding;
         } else {
@@ -159,6 +176,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             Transform placementSphereTransform = buildingPreviewInstance.GetComponent<Building>().currentPlacementSphere.transform;
             newBuilding.transform.position = placementSphereTransform.position;
             newBuilding.GetComponent<Building>().whatKindOfBuilding();
+            newBuilding.GetComponent<Building>().isBuildingPlaced = true;
             BuyBuilding();
             return newBuilding;
         }
@@ -177,7 +195,9 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (resourceManager.totalForest >= buildingType.ForestNeededToBuy &&
             resourceManager.totalGrain >= buildingType.GrainNeededToBuy &&
             resourceManager.totalSheep >= buildingType.SheepNeededToBuy &&
-            resourceManager.totalBrick >= buildingType.BrickNeededToBuy) {
+            resourceManager.totalBrick >= buildingType.BrickNeededToBuy && 
+            populationManager.currentAvailablePopulation >= buildingType.PopulationNeedeToBuy
+            ) {
                 return true;
             } else {
                 print("can NOT afford building");
@@ -190,5 +210,6 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         resourceManager.totalGrain -= buildingType.GrainNeededToBuy;
         resourceManager.totalSheep -= buildingType.SheepNeededToBuy;
         resourceManager.totalBrick -= buildingType.BrickNeededToBuy;
+        populationManager.currentAvailablePopulation -= buildingType.PopulationNeedeToBuy;
     }
 }

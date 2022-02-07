@@ -7,8 +7,10 @@ public class BuildingTypeSO : ScriptableObject
 {
     public string buildingName;
     public GameObject buildingPrefab;
+    public bool isRoad;
     public int ForestNeededToBuy;
     public int GrainNeededToBuy;
     public int BrickNeededToBuy;
     public int SheepNeededToBuy;
+    public int PopulationNeedeToBuy;
 }
